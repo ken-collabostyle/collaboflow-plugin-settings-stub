@@ -1,12 +1,52 @@
-# React + Vite
+# コラボフロー プラグイン設定画面開発用スタブ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+このリポジトリは、コラボフローのプラグイン設定画面をローカル環境で開発・テストするためのスタブです。実際のコラボフロー環境を必要とせずに、プラグイン設定の取得、保存、フォームパーツ情報の取得といった動作を模倣します。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`index.html`を直接ブラウザで開くことで、プラグイン設定画面のUIと挙動を素早く確認できます。
 
-## Expanding the ESLint configuration
+## 主な機能
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **プラグイン設定の管理**: `localStorage`
+  を利用して、プラグインの設定情報を永続化します。
+- **フォームパーツ情報の提供**:
+  コラボフローの各種フォームパーツのダミー情報を取得できます。
+- **版ごとの設定**:
+  複数の版（バージョン）ごとの設定情報を個別に保存・取得できます。
+
+## ファイル構成と役割
+
+- `index.html`
+  - プラグイン設定画面のUIです。このファイルをブラウザで開いて開発を進めます。
+- `js/settings/settings.js`
+  - `index.html`
+    のUIイベント（ボタンクリックなど）を処理し、`plugin-settings-stub.js`
+    の関数を呼び出すメインのスクリプトです。
+- `js/settings/plugin-settings-stub.js`
+  - コラボフローのプラグインAPIの動作を模倣するスタブです。このファイル内の
+    `collaboflowPlugin` オブジェクトがAPIのインターフェースを提供します。
+    - `getSettings(version)`: 指定された版の設定を取得します。
+    - `saveSettings(jsonData, version)`: 指定された版に設定を保存します。
+    - `getFormItems()`: フォームパーツのダミー定義を取得します。
+
+## 使い方
+
+1. このリポジトリをクローンまたはダウンロードします。
+2. `index.html` ファイルをウェブブラウザで開きます。
+3. 画面上のUIを使って、以下の操作をテストできます。
+   - **版選択**: ドロップダウンで設定の版を選択します。
+   - **取得**: 選択した版のプラグイン設定をテキストエリアに読み込みます。
+   - **保存**:
+     テキストエリアの内容を選択した版のプラグイン設定として保存します。
+   - **パーツ選択と追加**:
+     ドロップダウンからフォームパーツを選択し、「テキストに追加」ボタンでパーツの名称をテキストエリアに挿入します。
+
+## 開発について
+
+`js/settings/settings.js`
+を編集して、あなたのプラグイン設定画面のロジックを実装してください。UIの変更は
+`index.html` で行います。
+
+`plugin-settings-stub.js` の `formItemsData`
+定数を変更することで、テストに使用するフォームパーツの情報をカスタマイズすることも可能です。
