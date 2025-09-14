@@ -4,52 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プラグイン設定サンプル</title>
-  <script type="module" src="./js/settings/settings.js"></script>
-  <style>
-    body {
-      margin: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .plugin-editor {
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .plugin-editor__section {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-  </style>
 </head>
 <body>
-  <div><h1>プラグイン設定サンプル</h1></div>
-  <div class="plugin-editor">
-    <div class="plugin-editor__section">
-      版選択：
-      <select id="form-version">
-        <option value="0">すべて</option>
-        <option value="1">1版</option>
-        <option value="2">2版</option>
-      </select>
-      <button id="get-button">取得</button>
-      <button id="save-button">保存</button>
-    </div>
-    <div class="plugin-editor__section">
-      パーツ選択：
-      <select id="form-parts"></select>
-      <button id="add-button">テキストに追加</button>
-    </div>
-    <div class="plugin-editor__section">
-      <textarea id="input-text" rows="7" cols="70" ></textarea>
-    </div>
-  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
+</html>
